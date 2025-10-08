@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://css_main.playcode.io/style.css">
+    <link rel="stylesheet" href="https://p0pup.playcode.io/style.css">
+    
+    <style>
+        strong {
+            cursor: pointer;
+        }
+
+        #outpoot {
+            min-height: 110px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+    <textarea id="inf" rows="16" style="resize: none; color: blue;" spellcheck="false"></textarea>
+    <button onclick="run()">run</button>
+    </div>
+    <div class="login">
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+<h2 id="popupText"></h2>
+<button onclick="closePopup()">ok</button>
+</div>
+
+        <div id="outpoot">
+            
+        </div>
+    </div>
+    <script>
+
+        const run = () => {
+            document.getElementById("outpoot").innerHTML = `<header style="background-color: gray; user-select: none;
+"><strong style="color: gray;">H</strong><strong onclick="mini()"> - </strong><strong onclick="maxi()">o </strong><strong onclick="close_app()">x</strong></header>`
+            document.getElementById("outpoot").style.backgroundColor = "white";
+            eval(document.getElementById("inf").value)
+        }
+
+        const close_app = () => {
+            document.getElementById("outpoot").innerHTML = `<header style="background-color: gray; user-select: none;
+"><strong style="color: gray;">H</strong><strong onclick="mini()"> - </strong><strong onclick="maxi()">o </strong><strong onclick="close_app()">x</strong></header>`
+            document.getElementById("outpoot").style.backgroundColor = "white"
+        }
+
+        const maxi = () => {
+            document.documentElement.requestFullscreen();
+        }
+
+        const mini = () => {
+            document.exitFullscreen();
+        }
+
+        function warn(text){
+            document.getElementById("popupText").textContent = text
+            document.getElementById("popup").style.display = 'block'
+            document.getElementById("overlay").style.display = 'block'
+        }
+
+        function closePopup() {
+            document.getElementById("overlay").style.display = 'none'
+            document.getElementById("popup").style.display = 'none'
+
+        }
+
+        const color = (color) => {
+            document.getElementById("outpoot").style.backgroundColor = color
+        }
+
+        const show = (text, widht) => {
+            if(widht === 1) {
+                document.getElementById("outpoot").innerHTML += `<h6>${text}</h6>`
+            } else if(widht === 2) {
+                document.getElementById("outpoot").innerHTML += `<h5>${text}</h5>`
+            } else if(widht === 3) {
+                document.getElementById("outpoot").innerHTML += `<h4>${text}</h4>`
+            } else if(widht === 4) {
+                document.getElementById("outpoot").innerHTML += `<h3>${text}</h3>`
+            } else if(widht === 5) {
+                document.getElementById("outpoot").innerHTML += `<h2>${text}</h2>`
+            } else if(widht === 6) {
+                document.getElementById("outpoot").innerHTML += `<h1>${text}</h1>`
+            } else {
+                alert("the width is not suportet")
+            }
+        }
+
+        const btn = (innerText, onclick) => {
+            document.getElementById("outpoot").innerHTML += `<button class="btn" onclick="${onclick}">${innerText}</button>`
+        }
+
+        const input = (prompt) => {
+            document.getElementById("outpoot").innerHTML += `<input type="text" placeholder="${prompt}">`
+        }
+
+        
+    </script>
+</body>
+</html>
